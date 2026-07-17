@@ -58,3 +58,13 @@ export class TaskService {
         return undefined;
     }
 }
+
+/*
+Enfoque utilizado:
+La solución fue desarrollada aplicando Programación Orientada a Objetos y separación de responsabilidades
+mediante una arquitectura por capas. 
+La clase Task representa la entidad principal del sistema, mientras que TaskService concentra la lógica
+de negocio y FileManager se encarga de la persistencia de información en un archivo JSON. 
+La aplicación de consola y la API REST consumen los mismos servicios para evitar duplicación de código y 
+mantener un bajo acoplamiento entre componentes.
+*/
