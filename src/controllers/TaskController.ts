@@ -8,12 +8,14 @@ export class TaskController {
         this.taskService = taskService;
     }
 
+    //POST /tasks - Crea una nueva tarea
     async createTask(req: Request, res: Response) {
         const { title } = req.body;
         const newTask = await this.taskService.addTask(title);
         res.status(201).json(newTask);
     }
 
+    //DELETE /tasks/:id - Elimina una tarea por ID
     async deleteTask(req: Request, res: Response) {
         const id = Number(req.params.id);
         const deleted = await this.taskService.deleteTask(id);
@@ -22,4 +24,15 @@ export class TaskController {
         }
         res.json({ message: "Task deleted successfully" });
     }
+
+    //PUT /tasks/:id - Marca una tarea como completada
+    async completeTask(req: Request, res: Response) {
+        const id = Number(req.params.id);
+        const task = await this.taskService.completeTask(id);
+        if (!task) {
+            res.status(404).json({ message: "Task not found" });
+        }
+        res.json(task);
+    }
+
 }
