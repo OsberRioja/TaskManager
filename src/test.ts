@@ -1,19 +1,17 @@
 import { FileManager } from "./utils/FileManager";
 import { Task } from "./models/task";
+import { TaskService } from "./services/TaskService";
 
 async function main() {
-    const fileManager = new FileManager();
+    const service = new TaskService(new FileManager());
 
-    const tasks = [
-    new Task(1,"Comprar pan"),
-    new Task(2,"Hacer ejercicio")
-    ];
+    const tasks = await service.getAllTasks();
 
-    await fileManager.saveTasks(tasks);
+    console.log("All Tasks:", tasks);
 
-    const loaded = await fileManager.loadTasks();
+    console.log(await service.getPendingTasks());
 
-    console.log(loaded[0] instanceof Task);
+    console.log(await service.getTaskById(1));
 }
 
 main();
