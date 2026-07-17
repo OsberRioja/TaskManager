@@ -35,4 +35,10 @@ export class TaskController {
         res.json(task);
     }
 
+    //GET /tasks/pending - Obtiene todas las tareas pendientes
+    async getPendingTasks(req: Request, res: Response) {
+        const tasks = await this.taskService.getPendingTasks();
+        res.json(tasks);
+    }
+
 }
