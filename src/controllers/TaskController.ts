@@ -41,6 +41,7 @@ export class TaskController {
         res.json(tasks);
     }
 
+    //GET /tasks/:id - Obtiene una tarea por ID
     async getTaskById(req: Request, res: Response) {
         const id = Number(req.params.id);
         const task = await this.taskService.getTaskById(id);
@@ -50,4 +51,9 @@ export class TaskController {
         res.json(task);
     }
 
+    //GET /tasks - Obtiene todas las tareas
+    async getAllTasks(req: Request, res: Response) {
+        const tasks = await this.taskService.getAllTasks();
+        res.json(tasks);
+    }
 }

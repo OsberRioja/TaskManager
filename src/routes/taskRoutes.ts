@@ -19,8 +19,11 @@ router.delete("/:id", taskController.deleteTask.bind(taskController));
 router.put("/:id", taskController.completeTask.bind(taskController));
 
 //GET /tasks/pending - Obtiene todas las tareas pendientes
-router.get("/", taskController.getPendingTasks.bind(taskController));
+router.get("/pending", taskController.getPendingTasks.bind(taskController));
 
 //GET /tasks/:id - Obtiene una tarea por ID
 router.get("/:id", taskController.getTaskById.bind(taskController));
+
+//GET /tasks - Obtiene todas las tareas
+router.get("/", taskController.getAllTasks.bind(taskController));
 export default router;
