@@ -12,4 +12,7 @@ const taskController = new TaskController(taskService);
 //POST /tasks - Crea una nueva tarea
 router.post("/", taskController.createTask.bind(taskController));
 
+//DELETE /tasks/:id - Elimina una tarea por ID
+router.delete("/:id", taskController.deleteTask.bind(taskController));
+
 export default router;

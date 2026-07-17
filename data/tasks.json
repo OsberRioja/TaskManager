@@ -13,10 +13,5 @@
     "id": 3,
     "title": "Comprar leche",
     "completed": true
-  },
-  {
-    "id": 4,
-    "title": "Aprender Express",
-    "completed": false
   }
 ]

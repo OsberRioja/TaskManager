@@ -13,4 +13,13 @@ export class TaskController {
         const newTask = await this.taskService.addTask(title);
         res.status(201).json(newTask);
     }
+
+    async deleteTask(req: Request, res: Response) {
+        const id = Number(req.params.id);
+        const deleted = await this.taskService.deleteTask(id);
+        if (!deleted) {
+            res.status(404).json({ message: "Task not found" });
+        }
+        res.json({ message: "Task deleted successfully" });
+    }
 }
