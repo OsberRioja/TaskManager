@@ -5,13 +5,13 @@ import { TaskService } from "./services/TaskService";
 async function main() {
     const service = new TaskService(new FileManager());
 
-    const tasks = await service.getAllTasks();
+    console.log(await service.getAllTasks());
 
-    console.log("All Tasks:", tasks);
+    await service.completeTask(1);
 
-    console.log(await service.getPendingTasks());
+    console.log(await service.getAllTasks());
 
-    console.log(await service.getTaskById(1));
+    console.log("pendientes: ",await service.getPendingTasks());
 }
 
 main();
