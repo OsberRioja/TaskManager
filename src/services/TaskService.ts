@@ -8,20 +8,24 @@ export class TaskService {
         this.fileManager = fileManager;
     }
 
+    //OBTIENE TODAS LAS TAREAS
     async getAllTasks(): Promise<Task[]> {
         return await this.fileManager.loadTasks();
     }
 
+    //OBTIENE TODAS LAS TAREAS PENDIENTES
     async getPendingTasks(): Promise<Task[]> {
         const tasks = await this.fileManager.loadTasks();
         return tasks.filter(task => !task.completed);
     }
 
+    //OBTIENE UNA TAREA POR ID
     async getTaskById(id: number): Promise<Task | undefined> {
         const tasks = await this.fileManager.loadTasks();
         return tasks.find(task => task.id === id);
     }
-
+    
+    //AGREGA UNA NUEVA TAREA
     async addTask(title: string): Promise<Task> {
         const tasks = await this.fileManager.loadTasks();
         const newTask = new Task(tasks.length + 1, title);
@@ -30,6 +34,7 @@ export class TaskService {
         return newTask;
     }
 
+    //ELIMINA UNA TAREA POR ID
     async deleteTask(id: number): Promise<boolean> {
         const tasks = await this.fileManager.loadTasks();
         const index = tasks.findIndex(task => task.id === id);
@@ -41,6 +46,7 @@ export class TaskService {
         return false;
     }
 
+    //MARCA UNA TAREA COMO COMPLETADA
     async completeTask(id: number): Promise<Task | undefined> {
         const tasks = await this.fileManager.loadTasks();
         const task = tasks.find(task => task.id === id);
